@@ -1,8 +1,11 @@
-all: mathsLibs.o
+CC:=g++
+SRCS:=mathlib.c
+
+all: *.o
 	ar rvs lib.a $^
-mathLibs.o: mathLibs.c
-	g++ -c mathLibs.c
+mathlib.o: $(SRCS)
+	@$(CC) -c $(SRCS)
 %.o: %.c %.h
-	g++ -c $<
+	@$(CC) -c $<
 clean:
 	rm -f *.o *.a
